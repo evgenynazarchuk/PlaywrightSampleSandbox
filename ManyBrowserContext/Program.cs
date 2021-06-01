@@ -28,11 +28,11 @@ namespace ManyBrowserContext
             using var playwright = await Playwright.CreateAsync();
             await using var browser = await playwright.Chromium.LaunchAsync(headless: true);
 
-            var countPage = Links.Urls.Length;
+            var countPage = 10; // Links.Urls.Length;
             var tasks = new Task[countPage];
             for (int i = 0; i < countPage; i++)
             {
-                tasks[i] = GoLink(browser, Links.Urls[i]);
+                tasks[i] = GoLink(browser, "https://google.com");
             }
             Task.WaitAll(tasks);
         }
